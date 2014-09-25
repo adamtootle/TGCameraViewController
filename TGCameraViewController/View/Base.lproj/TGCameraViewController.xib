@@ -12,6 +12,7 @@
                 <outlet property="bottomRightView" destination="HFV-tF-409" id="gvx-Rz-7bX"/>
                 <outlet property="captureView" destination="dIq-rQ-gzr" id="F4T-QP-lPu"/>
                 <outlet property="flashButton" destination="p7O-pE-Mp0" id="Tqo-vg-CGw"/>
+                <outlet property="galleryButton" destination="fEa-Mv-6Tq" id="m5j-wN-rtF"/>
                 <outlet property="gridButton" destination="Nol-dD-ETh" id="tfG-QF-CbC"/>
                 <outlet property="shotButton" destination="wtQ-Dg-G3i" id="cWY-WV-5Gp"/>
                 <outlet property="slideDownView" destination="Czb-nz-m44" id="Ga2-kT-HSY"/>
@@ -171,15 +172,36 @@
                                 <action selector="gridTapped" destination="-1" eventType="touchUpInside" id="6m1-BO-Ve2"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEa-Mv-6Tq" userLabel="Gallery">
+                            <rect key="frame" x="5" y="10" width="70" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="AEV-76-L7o"/>
+                                <constraint firstAttribute="height" constant="80" id="RcP-93-aPz"/>
+                            </constraints>
+                            <state key="normal" image="CameraGallery">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="galleryTapped" destination="-1" eventType="touchUpInside" id="QhY-Kk-tlS"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="fEa-Mv-6Tq" firstAttribute="centerY" secondItem="wtQ-Dg-G3i" secondAttribute="centerY" id="1rH-S0-zZQ"/>
                         <constraint firstAttribute="centerY" secondItem="wtQ-Dg-G3i" secondAttribute="centerY" id="GGn-PI-77o"/>
+                        <constraint firstItem="fEa-Mv-6Tq" firstAttribute="leading" secondItem="rJ9-I8-VJI" secondAttribute="leading" constant="5" id="MKV-td-2vp"/>
                         <constraint firstAttribute="height" constant="100" id="Yv5-Cy-07J"/>
                         <constraint firstAttribute="trailing" secondItem="Nol-dD-ETh" secondAttribute="trailing" constant="5" id="ao4-yy-KAa"/>
                         <constraint firstAttribute="centerX" secondItem="wtQ-Dg-G3i" secondAttribute="centerX" id="fIy-sn-2XV"/>
+                        <constraint firstItem="fEa-Mv-6Tq" firstAttribute="top" secondItem="rJ9-I8-VJI" secondAttribute="top" constant="35" id="nIB-Jl-iQh"/>
                         <constraint firstItem="Nol-dD-ETh" firstAttribute="centerY" secondItem="wtQ-Dg-G3i" secondAttribute="centerY" id="zEZ-PL-bsi"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="nIB-Jl-iQh"/>
+                        </mask>
+                    </variation>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -244,6 +266,7 @@
         <image name="CameraClose" width="26" height="26"/>
         <image name="CameraDetail" width="58" height="58"/>
         <image name="CameraFlashAuto" width="41" height="41"/>
+        <image name="CameraGallery" width="30" height="30"/>
         <image name="CameraGrid" width="26" height="26"/>
         <image name="CameraShot" width="78" height="78"/>
         <image name="CameraToggle" width="26" height="26"/>

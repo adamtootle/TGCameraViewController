@@ -20,6 +20,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *bottomLeftView;
 @property (strong, nonatomic) IBOutlet UIImageView *bottomRightView;
 @property (strong, nonatomic) IBOutlet UIButton *gridButton;
+@property (strong, nonatomic) IBOutlet UIButton *galleryButton;
 @property (strong, nonatomic) IBOutlet UIButton *toggleButton;
 @property (strong, nonatomic) IBOutlet UIButton *shotButton;
 @property (strong, nonatomic) IBOutlet UIButton *flashButton;
@@ -33,6 +34,7 @@
 
 - (IBAction)closeTapped;
 - (IBAction)gridTapped;
+- (IBAction)galleryTapped;
 - (IBAction)flashTapped;
 - (IBAction)shotTapped;
 - (IBAction)toggleTapped;
@@ -46,7 +48,9 @@
 
 
 
-@implementation TGCameraViewController
+@implementation TGCameraViewController {
+    UIImagePickerController *imagePickerController;
+}
 
 - (void)viewDidLoad
 {
@@ -73,6 +77,7 @@
                                                object:nil];
     
     _gridButton.enabled =
+    _galleryButton.enabled =
     _toggleButton.enabled =
     _shotButton.enabled =
     _flashButton.enabled = NO;
@@ -81,6 +86,7 @@
     
     [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
         _gridButton.enabled =
+        _galleryButton.enabled =
         _toggleButton.enabled =
         _shotButton.enabled =
         _flashButton.enabled = YES;
@@ -131,6 +137,22 @@
 }
 
 #pragma mark -
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:info[UIImagePickerControllerOriginalImage]];
+    [self.navigationController pushViewController:viewController animated:NO];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark -
 #pragma mark - Actions
 
 - (IBAction)closeTapped
@@ -143,6 +165,18 @@
 - (IBAction)gridTapped
 {
     [_camera disPlayGridView];
+}
+
+- (IBAction)galleryTapped
+{
+    if(imagePickerController == nil)
+    {
+        imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.delegate = self;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    [self.navigationController presentViewController:imagePickerController animated:YES completion:nil];
 }
 
 - (IBAction)flashTapped
