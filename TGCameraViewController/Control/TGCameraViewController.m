@@ -76,21 +76,23 @@
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
     
-    _gridButton.enabled =
-    _galleryButton.enabled =
-    _toggleButton.enabled =
-    _shotButton.enabled =
-    _flashButton.enabled = NO;
-    
     [_camera startRunning];
     
-    [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
+    if (!_wasLoaded) {
         _gridButton.enabled =
         _galleryButton.enabled =
         _toggleButton.enabled =
         _shotButton.enabled =
-        _flashButton.enabled = YES;
-    }];
+        _flashButton.enabled = NO;
+        
+        [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
+            _gridButton.enabled =
+            _galleryButton.enabled =
+            _toggleButton.enabled =
+            _shotButton.enabled =
+            _flashButton.enabled = YES;
+        }];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -102,6 +104,12 @@
     if (_wasLoaded == NO) {
         _wasLoaded = YES;
         [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
+    }
+    
+    if (imagePickerController == nil) {
+        imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.delegate = self;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
 }
 
@@ -169,13 +177,6 @@
 
 - (IBAction)galleryTapped
 {
-    if(imagePickerController == nil)
-    {
-        imagePickerController = [[UIImagePickerController alloc] init];
-        imagePickerController.delegate = self;
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    
     [self.navigationController presentViewController:imagePickerController animated:YES completion:nil];
 }
 
