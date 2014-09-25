@@ -41,6 +41,11 @@
     return camera;
 }
 
++ (BOOL)deviceSupportsCamera
+{
+    return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
+}
+
 #pragma mark -
 #pragma mark - Public methods
 

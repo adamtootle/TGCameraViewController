@@ -56,7 +56,10 @@
 {
     [super viewDidLoad];
     
-    _camera = [TGCamera cameraWithFlashButton:_flashButton];
+    if ([TGCamera deviceSupportsCamera]) {
+        _camera = [TGCamera cameraWithFlashButton:_flashButton];
+    }
+    
     _effectiveScale = 1.;
     
     _captureView.backgroundColor = [UIColor clearColor];
@@ -78,6 +81,12 @@
     
     [_camera startRunning];
     
+    if (imagePickerController == nil) {
+        imagePickerController = [[UIImagePickerController alloc] init];
+        imagePickerController.delegate = self;
+        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
     if (!_wasLoaded) {
         _gridButton.enabled =
         _galleryButton.enabled =
@@ -85,13 +94,28 @@
         _shotButton.enabled =
         _flashButton.enabled = NO;
         
-        [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
-            _gridButton.enabled =
-            _galleryButton.enabled =
-            _toggleButton.enabled =
-            _shotButton.enabled =
-            _flashButton.enabled = YES;
-        }];
+        if ([TGCamera deviceSupportsCamera]) {
+            [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
+                _gridButton.enabled =
+                _galleryButton.enabled =
+                _toggleButton.enabled =
+                _shotButton.enabled =
+                _flashButton.enabled = YES;
+            }];
+        }
+        else {
+            [_captureView addSubview:_slideUpView];
+            
+            CGRect slideDownFrame = _slideDownView.frame;
+            slideDownFrame.origin.y = CGRectGetHeight(_captureView.frame)/2;
+            _slideDownView.frame = slideDownFrame;
+            
+            [_captureView addSubview:_slideDownView];
+            
+            if (![TGCamera deviceSupportsCamera]) {
+                [self galleryTapped];
+            }
+        }
     }
 }
 
@@ -104,12 +128,6 @@
     if (_wasLoaded == NO) {
         _wasLoaded = YES;
         [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
-    }
-    
-    if (imagePickerController == nil) {
-        imagePickerController = [[UIImagePickerController alloc] init];
-        imagePickerController.delegate = self;
-        imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
 }
 
@@ -158,6 +176,10 @@
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    if (![TGCamera deviceSupportsCamera]) {
+        [_delegate cameraDidCancel];
+    }
 }
 
 #pragma mark -

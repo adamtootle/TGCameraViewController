@@ -25,6 +25,7 @@
 ((unavailable("[-init] is not allowed, use [+cameraWithRootView:andCaptureView:]")));
 
 + (instancetype)cameraWithFlashButton:(UIButton *)flashButton;
++ (BOOL)deviceSupportsCamera;
 
 - (void)startRunning;
 - (void)stopRunning;
