@@ -9,7 +9,7 @@
 #import "TGCameraViewController.h"
 #import "TGPhotoViewController.h"
 #import "TGCameraSlideView.h"
-
+#import <AssetsLibrary/AssetsLibrary.h>
 
 
 @interface TGCameraViewController ()
@@ -117,6 +117,8 @@
             }
         }
     }
+    
+    [self updateGalleryButtonWithLatestPhoto];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -333,6 +335,37 @@
         [previewLayer setAffineTransform:CGAffineTransformMakeScale(_effectiveScale, _effectiveScale)];
         [CATransaction commit];
     }
+}
+
+- (void)updateGalleryButtonWithLatestPhoto
+{
+    ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+    
+    // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
+    [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        
+        if([group numberOfAssets] < 1) return;
+        
+        // Within the group enumeration block, filter to enumerate just photos.
+        [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+        
+        // Chooses the photo at the last index
+        [group enumerateAssetsAtIndexes:[NSIndexSet indexSetWithIndex:([group numberOfAssets] - 1)] options:0 usingBlock:^(ALAsset *alAsset, NSUInteger index, BOOL *innerStop) {
+            
+            // The end of the enumeration is signaled by asset == nil.
+            if (alAsset)
+            {
+                ALAssetRepresentation *representation = [alAsset defaultRepresentation];
+                UIImage *latestPhoto = [UIImage imageWithCGImage:[representation fullScreenImage]];
+                
+                _galleryButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
+                [_galleryButton setImage:latestPhoto forState:UIControlStateNormal];
+            }
+        }];
+    } failureBlock: ^(NSError *error) {
+        // Typically you should handle an error more gracefully than this.
+        NSLog(@"No groups");
+    }];
 }
 
 @end
