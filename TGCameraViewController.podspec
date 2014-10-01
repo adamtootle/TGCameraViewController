@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'TGCameraViewController'
-  s.version = '1.0.5'
+  s.version = '1.0.7'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
   s.summary = 'Custom camera with AVFoundation. Beautiful, light and easy to integrate with iOS projects.'
   s.homepage = 'https://github.com/tdginternet/TGCameraViewController'
@@ -12,6 +12,7 @@ Pod::Spec.new do |s|
   
   s.authors = { 'Bruno Tortato Furtado' => 'bruno@furtado.me' }
   
+  s.ios.frameworks = 'AssetsLibrary', 'AVFoundation', 'CoreImage', 'Foundation', 'MobileCoreServices', 'UIKit'
   s.source_files = 'TGCameraViewController/**/*.{h,m}'
   s.resources = ['TGCameraViewController/**/*.xib', 'TGCameraViewController/**/*.xcassets']
   s.source = { :git => 'https://github.com/tdginternet/TGCameraViewController.git', :tag => s.version }  
