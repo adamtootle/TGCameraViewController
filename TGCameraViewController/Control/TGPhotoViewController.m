@@ -43,6 +43,7 @@
 @property (strong, nonatomic) UIView *detailFilterView;
 @property (strong, nonatomic) UIImage *photo;
 
+- (IBAction)closeTapped;
 - (IBAction)backTapped;
 - (IBAction)confirmTapped;
 - (IBAction)filtersTapped;
@@ -95,6 +96,13 @@
 
 #pragma mark -
 #pragma mark - Controller actions
+
+- (IBAction)closeTapped
+{
+    if ([_delegate respondsToSelector:@selector(cameraDidCancel)]) {
+        [_delegate cameraDidCancel];
+    }
+}
 
 - (IBAction)backTapped
 {
@@ -173,7 +181,7 @@
     frame.origin.y = CGRectGetMaxY(button.frame) - height;
     
     _detailFilterView = [[UIView alloc] initWithFrame:frame];
-    _detailFilterView.backgroundColor = [TGCameraColor orangeColor];
+    _detailFilterView.backgroundColor = [UIColor colorWithRed:0.267 green:0.694 blue:0.914 alpha:1];
     _detailFilterView.userInteractionEnabled = NO;
     
     [button addSubview:_detailFilterView];

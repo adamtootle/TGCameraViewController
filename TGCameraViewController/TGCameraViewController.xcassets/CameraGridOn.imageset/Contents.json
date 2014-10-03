@@ -2,17 +2,18 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
+      "scale" : "1x",
+      "filename" : "CameraGridOn.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "CameraGrid@2x.png"
+      "filename" : "CameraGridOn@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "CameraGrid@3x.png"
+      "filename" : "CameraGridOn@3x.png"
     }
   ],
   "info" : {

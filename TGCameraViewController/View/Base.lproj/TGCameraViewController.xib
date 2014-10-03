@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
     </dependencies>
@@ -29,7 +28,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-rQ-gzr" userLabel="Capture View">
-                    <rect key="frame" x="0.0" y="50" width="600" height="450"/>
+                    <rect key="frame" x="0.0" y="44" width="600" height="433"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="ljD-PV-2sR" userLabel="Top Left">
                             <rect key="frame" x="0.0" y="0.0" width="58" height="58"/>
@@ -46,14 +45,14 @@
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="2rS-OA-lDQ" userLabel="Bottom Left">
-                            <rect key="frame" x="0.0" y="392" width="58" height="58"/>
+                            <rect key="frame" x="0.0" y="375" width="58" height="58"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="58" id="Veh-dT-2MM"/>
                                 <constraint firstAttribute="height" constant="58" id="X2r-AO-AoJ"/>
                             </constraints>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="HFV-tF-409" userLabel="Bottom Right">
-                            <rect key="frame" x="542" y="392" width="58" height="58"/>
+                            <rect key="frame" x="542" y="375" width="58" height="58"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="58" id="G0H-ic-hcw"/>
                                 <constraint firstAttribute="width" constant="58" id="KTM-6C-hdM"/>
@@ -78,12 +77,12 @@
                     </connections>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dit-c7-IZk" userLabel="Top View">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O3k-MF-E1l" userLabel="Close">
-                            <rect key="frame" x="5" y="0.0" width="50" height="50"/>
+                            <rect key="frame" x="5" y="0.0" width="50" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="WYh-99-1jy"/>
+                                <constraint firstAttribute="height" constant="44" id="WYh-99-1jy"/>
                                 <constraint firstAttribute="width" constant="50" id="x5F-jO-BIB"/>
                             </constraints>
                             <state key="normal" image="CameraClose">
@@ -94,9 +93,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WJG-N5-BnZ" userLabel="Toggle">
-                            <rect key="frame" x="455" y="0.0" width="70" height="50"/>
+                            <rect key="frame" x="455" y="0.0" width="70" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Ohv-kM-K2G"/>
+                                <constraint firstAttribute="height" constant="44" id="Ohv-kM-K2G"/>
                                 <constraint firstAttribute="width" constant="70" id="ano-tf-LKd"/>
                             </constraints>
                             <state key="normal" image="CameraToggle">
@@ -107,9 +106,9 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7O-pE-Mp0" userLabel="Flash">
-                            <rect key="frame" x="525" y="0.0" width="70" height="50"/>
+                            <rect key="frame" x="525" y="0.0" width="70" height="44"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="ORX-oj-ZSI"/>
+                                <constraint firstAttribute="height" constant="44" id="ORX-oj-ZSI"/>
                                 <constraint firstAttribute="width" constant="70" id="au7-7K-Q9I"/>
                             </constraints>
                             <state key="normal" image="CameraFlashAuto">
@@ -120,7 +119,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="WJG-N5-BnZ" firstAttribute="top" secondItem="p7O-pE-Mp0" secondAttribute="top" id="1Zk-3D-eue"/>
                         <constraint firstAttribute="trailing" secondItem="WJG-N5-BnZ" secondAttribute="trailing" constant="75" id="5re-zg-lW2"/>
@@ -132,7 +131,7 @@
                         <constraint firstItem="p7O-pE-Mp0" firstAttribute="top" secondItem="dit-c7-IZk" secondAttribute="top" id="eKq-W9-3hu"/>
                         <constraint firstItem="O3k-MF-E1l" firstAttribute="firstBaseline" secondItem="WJG-N5-BnZ" secondAttribute="firstBaseline" id="fUJ-Dn-9Xc"/>
                         <constraint firstItem="WJG-N5-BnZ" firstAttribute="baseline" secondItem="O3k-MF-E1l" secondAttribute="baseline" id="hLO-P0-ZcW"/>
-                        <constraint firstAttribute="height" constant="50" id="hyA-J5-S26"/>
+                        <constraint firstAttribute="height" constant="44" id="hyA-J5-S26"/>
                         <constraint firstItem="WJG-N5-BnZ" firstAttribute="firstBaseline" secondItem="O3k-MF-E1l" secondAttribute="firstBaseline" id="igP-Vd-5s4"/>
                         <constraint firstItem="O3k-MF-E1l" firstAttribute="baseline" secondItem="WJG-N5-BnZ" secondAttribute="baseline" id="sGT-T8-hn0"/>
                         <constraint firstItem="WJG-N5-BnZ" firstAttribute="top" secondItem="dit-c7-IZk" secondAttribute="top" constant="5" id="wCB-e9-o4i"/>
@@ -142,16 +141,18 @@
                             <exclude reference="fUJ-Dn-9Xc"/>
                             <exclude reference="sGT-T8-hn0"/>
                             <exclude reference="Va7-SY-m4l"/>
+                            <exclude reference="hLO-P0-ZcW"/>
+                            <exclude reference="igP-Vd-5s4"/>
                             <exclude reference="wCB-e9-o4i"/>
                             <exclude reference="a5F-vd-b42"/>
                         </mask>
                     </variation>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJ9-I8-VJI" userLabel="Bottom View">
-                    <rect key="frame" x="0.0" y="500" width="600" height="100"/>
+                    <rect key="frame" x="0.0" y="477" width="600" height="123"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wtQ-Dg-G3i" userLabel="Shot">
-                            <rect key="frame" x="261" y="11" width="78" height="78"/>
+                            <rect key="frame" x="267" y="29" width="66" height="66"/>
                             <state key="normal" image="CameraShot">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -160,12 +161,12 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nol-dD-ETh" userLabel="Grid">
-                            <rect key="frame" x="525" y="10" width="70" height="80"/>
+                            <rect key="frame" x="525" y="22" width="70" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="7C6-xa-8et"/>
                                 <constraint firstAttribute="height" constant="80" id="Ulw-sc-Qe1"/>
                             </constraints>
-                            <state key="normal" image="CameraGrid">
+                            <state key="normal" image="CameraGridOff">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -173,7 +174,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEa-Mv-6Tq" userLabel="Gallery">
-                            <rect key="frame" x="5" y="15" width="70" height="70"/>
+                            <rect key="frame" x="5" y="27" width="70" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="AEV-76-L7o"/>
                                 <constraint firstAttribute="height" constant="70" id="RcP-93-aPz"/>
@@ -186,12 +187,12 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.078431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="fEa-Mv-6Tq" firstAttribute="centerY" secondItem="wtQ-Dg-G3i" secondAttribute="centerY" id="1rH-S0-zZQ"/>
                         <constraint firstAttribute="centerY" secondItem="wtQ-Dg-G3i" secondAttribute="centerY" id="GGn-PI-77o"/>
                         <constraint firstItem="fEa-Mv-6Tq" firstAttribute="leading" secondItem="rJ9-I8-VJI" secondAttribute="leading" constant="5" id="MKV-td-2vp"/>
-                        <constraint firstAttribute="height" constant="100" id="Yv5-Cy-07J"/>
+                        <constraint firstAttribute="height" constant="123" id="Yv5-Cy-07J"/>
                         <constraint firstAttribute="trailing" secondItem="Nol-dD-ETh" secondAttribute="trailing" constant="5" id="ao4-yy-KAa"/>
                         <constraint firstAttribute="centerX" secondItem="wtQ-Dg-G3i" secondAttribute="centerX" id="fIy-sn-2XV"/>
                         <constraint firstItem="fEa-Mv-6Tq" firstAttribute="top" secondItem="rJ9-I8-VJI" secondAttribute="top" constant="35" id="nIB-Jl-iQh"/>
@@ -263,12 +264,12 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="CameraClose" width="26" height="26"/>
+        <image name="CameraClose" width="17" height="17"/>
         <image name="CameraDetail" width="58" height="58"/>
-        <image name="CameraFlashAuto" width="41" height="41"/>
-        <image name="CameraGallery" width="30" height="30"/>
-        <image name="CameraGrid" width="26" height="26"/>
-        <image name="CameraShot" width="78" height="78"/>
+        <image name="CameraFlashAuto" width="35" height="24"/>
+        <image name="CameraGallery" width="38" height="38"/>
+        <image name="CameraGridOff" width="31" height="31"/>
+        <image name="CameraShot" width="66" height="66"/>
         <image name="CameraToggle" width="26" height="26"/>
     </resources>
 </document>

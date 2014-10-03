@@ -3,17 +3,17 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "CameraFilter.png"
+      "filename" : "CameraGridOff.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "CameraFilter@2x.png"
+      "filename" : "CameraGridOff@2x.png"
     },
     {
       "idiom" : "universal",
       "scale" : "3x",
-      "filename" : "CameraFilter@3x.png"
+      "filename" : "CameraGridOff@3x.png"
     }
   ],
   "info" : {

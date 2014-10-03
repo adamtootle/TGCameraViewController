@@ -67,6 +67,7 @@
 
 @implementation TGCameraViewController {
     UIImagePickerController *imagePickerController;
+    BOOL gridIsVisible;
 }
 
 - (void)viewDidLoad
@@ -213,6 +214,15 @@
 
 - (IBAction)gridTapped
 {
+    if (gridIsVisible) {
+        [self.gridButton setImage:[UIImage imageNamed:@"CameraGridOff"] forState:UIControlStateNormal];
+    }
+    else {
+        [self.gridButton setImage:[UIImage imageNamed:@"CameraGridOn"] forState:UIControlStateNormal];
+    }
+    
+    gridIsVisible = !gridIsVisible;
+    
     [_camera disPlayGridView];
 }
 
