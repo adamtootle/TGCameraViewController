@@ -156,7 +156,7 @@
                                        delay:0.2f
                                      options:0
                                   animations:^{
-                                      self.shutterFlashView.alpha = 0.0f;
+                                      _shutterFlashView.alpha = 0.0f;
                                   }
                                   completion:^(BOOL finished) {
                                       _gridButton.enabled =
@@ -220,6 +220,14 @@
 }
 
 #pragma mark -
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+}
+
+#pragma mark -
 #pragma mark - Actions
 
 - (IBAction)closeTapped
@@ -265,9 +273,9 @@
     
     [_camera takePhotoWithCaptureView:_captureView effectiveScale:_effectiveScale videoOrientation:videoOrientation completion:^(UIImage *photo) {
         
-        self.shutterFlashView.alpha = 1.0f;
+        _shutterFlashView.alpha = 1.0f;
         [UIView animateWithDuration:0.2f animations:^{
-            self.shutterFlashView.alpha = 0.0f;
+            _shutterFlashView.alpha = 0.0f;
         } completion:^(BOOL finished) {
             TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
             [self.navigationController pushViewController:viewController animated:YES];
