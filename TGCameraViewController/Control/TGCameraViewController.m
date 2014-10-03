@@ -43,6 +43,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *flashButton;
 @property (strong, nonatomic) IBOutlet TGCameraSlideView *slideUpView;
 @property (strong, nonatomic) IBOutlet TGCameraSlideView *slideDownView;
+@property (strong, nonatomic) IBOutlet UIView *shutterFlashView;
 
 @property (strong, nonatomic) TGCamera *camera;
 @property (nonatomic) CGFloat beginPinchGestureScale;
@@ -113,13 +114,13 @@
         _flashButton.enabled = NO;
         
         if ([TGCamera deviceSupportsCamera]) {
-            [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
-                _gridButton.enabled =
-                _galleryButton.enabled =
-                _toggleButton.enabled =
-                _shotButton.enabled =
-                _flashButton.enabled = YES;
-            }];
+//            [TGCameraSlideView hideSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
+//                _gridButton.enabled =
+//                _galleryButton.enabled =
+//                _toggleButton.enabled =
+//                _shotButton.enabled =
+//                _flashButton.enabled = YES;
+//            }];
         }
         else {
             [_captureView addSubview:_slideUpView];
@@ -148,6 +149,22 @@
     if (_wasLoaded == NO) {
         _wasLoaded = YES;
         [_camera insertSublayerWithCaptureView:_captureView atRootView:self.view];
+    }
+    
+    if ([TGCamera deviceSupportsCamera]) {
+        [UIView animateKeyframesWithDuration:0.2f
+                                       delay:0.2f
+                                     options:0
+                                  animations:^{
+                                      self.shutterFlashView.alpha = 0.0f;
+                                  }
+                                  completion:^(BOOL finished) {
+                                      _gridButton.enabled =
+                                      _galleryButton.enabled =
+                                      _toggleButton.enabled =
+                                      _shotButton.enabled =
+                                      _flashButton.enabled = YES;
+                                  }];
     }
 }
 
@@ -240,15 +257,23 @@
 {
     _shotButton.enabled = NO;
     
-    [TGCameraSlideView showSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
-        UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
-        AVCaptureVideoOrientation videoOrientation = [self videoOrientationForDeviceOrientation:deviceOrientation];
+//    [TGCameraSlideView showSlideUpView:_slideUpView slideDownView:_slideDownView atView:_captureView completion:^{
+//        
+//    }];
+    UIDeviceOrientation deviceOrientation = [[UIDevice currentDevice] orientation];
+    AVCaptureVideoOrientation videoOrientation = [self videoOrientationForDeviceOrientation:deviceOrientation];
+    
+    [_camera takePhotoWithCaptureView:_captureView effectiveScale:_effectiveScale videoOrientation:videoOrientation completion:^(UIImage *photo) {
         
-        [_camera takePhotoWithCaptureView:_captureView effectiveScale:_effectiveScale videoOrientation:videoOrientation completion:^(UIImage *photo) {
+        self.shutterFlashView.alpha = 1.0f;
+        [UIView animateWithDuration:0.2f animations:^{
+            self.shutterFlashView.alpha = 0.0f;
+        } completion:^(BOOL finished) {
             TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:photo];
             [self.navigationController pushViewController:viewController animated:YES];
-            _shotButton.enabled = YES;
         }];
+        
+        _shotButton.enabled = YES;
     }];
 }
 

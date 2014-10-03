@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
     </dependencies>
@@ -14,6 +15,7 @@
                 <outlet property="galleryButton" destination="fEa-Mv-6Tq" id="m5j-wN-rtF"/>
                 <outlet property="gridButton" destination="Nol-dD-ETh" id="tfG-QF-CbC"/>
                 <outlet property="shotButton" destination="wtQ-Dg-G3i" id="cWY-WV-5Gp"/>
+                <outlet property="shutterFlashView" destination="29h-AL-12j" id="jXx-Nx-qpi"/>
                 <outlet property="slideDownView" destination="Czb-nz-m44" id="Ga2-kT-HSY"/>
                 <outlet property="slideUpView" destination="vJp-kA-okD" id="hiW-4t-8lC"/>
                 <outlet property="toggleButton" destination="WJG-N5-BnZ" id="QRP-Z9-Zpe"/>
@@ -30,44 +32,54 @@
                 <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dIq-rQ-gzr" userLabel="Capture View">
                     <rect key="frame" x="0.0" y="44" width="600" height="433"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="ljD-PV-2sR" userLabel="Top Left">
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="ljD-PV-2sR" userLabel="Top Left">
                             <rect key="frame" x="0.0" y="0.0" width="58" height="58"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="58" id="cpC-YT-5ut"/>
                                 <constraint firstAttribute="width" constant="58" id="rWY-0w-R1L"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="umk-ea-F3l" userLabel="Top Right">
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="umk-ea-F3l" userLabel="Top Right">
                             <rect key="frame" x="542" y="0.0" width="58" height="58"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="58" id="Fdp-us-eFu"/>
                                 <constraint firstAttribute="width" constant="58" id="V1b-Mr-c78"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="2rS-OA-lDQ" userLabel="Bottom Left">
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="2rS-OA-lDQ" userLabel="Bottom Left">
                             <rect key="frame" x="0.0" y="375" width="58" height="58"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="58" id="Veh-dT-2MM"/>
                                 <constraint firstAttribute="height" constant="58" id="X2r-AO-AoJ"/>
                             </constraints>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="HFV-tF-409" userLabel="Bottom Right">
+                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CameraDetail" translatesAutoresizingMaskIntoConstraints="NO" id="HFV-tF-409" userLabel="Bottom Right">
                             <rect key="frame" x="542" y="375" width="58" height="58"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="58" id="G0H-ic-hcw"/>
                                 <constraint firstAttribute="width" constant="58" id="KTM-6C-hdM"/>
                             </constraints>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29h-AL-12j" userLabel="Shutter Flash">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="433"/>
+                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="2rS-OA-lDQ" secondAttribute="bottom" id="2h7-dC-OtU"/>
                         <constraint firstAttribute="trailing" secondItem="umk-ea-F3l" secondAttribute="trailing" id="4w7-2T-CmB"/>
+                        <constraint firstAttribute="height" secondItem="29h-AL-12j" secondAttribute="height" id="6fa-fw-dYh"/>
+                        <constraint firstAttribute="bottom" secondItem="29h-AL-12j" secondAttribute="bottom" id="Kxl-4c-tL1"/>
+                        <constraint firstAttribute="trailing" secondItem="29h-AL-12j" secondAttribute="trailing" id="Oaa-Ye-86D"/>
                         <constraint firstItem="umk-ea-F3l" firstAttribute="top" secondItem="dIq-rQ-gzr" secondAttribute="top" id="QVH-Ht-BZn"/>
                         <constraint firstItem="ljD-PV-2sR" firstAttribute="top" secondItem="dIq-rQ-gzr" secondAttribute="top" id="Tb3-5U-4aC"/>
+                        <constraint firstItem="29h-AL-12j" firstAttribute="leading" secondItem="dIq-rQ-gzr" secondAttribute="leading" id="UcQ-KF-Pj7"/>
                         <constraint firstAttribute="bottom" secondItem="HFV-tF-409" secondAttribute="bottom" id="VhV-9c-gqk"/>
+                        <constraint firstItem="29h-AL-12j" firstAttribute="top" secondItem="dIq-rQ-gzr" secondAttribute="top" id="YfG-A2-bNf"/>
                         <constraint firstItem="2rS-OA-lDQ" firstAttribute="leading" secondItem="dIq-rQ-gzr" secondAttribute="leading" id="aCY-eM-els"/>
+                        <constraint firstAttribute="width" secondItem="29h-AL-12j" secondAttribute="width" id="bSS-jg-O2u"/>
                         <constraint firstItem="ljD-PV-2sR" firstAttribute="leading" secondItem="dIq-rQ-gzr" secondAttribute="leading" id="lt4-i5-6jm"/>
                         <constraint firstAttribute="trailing" secondItem="HFV-tF-409" secondAttribute="trailing" id="psU-Y4-Wlp"/>
                     </constraints>
