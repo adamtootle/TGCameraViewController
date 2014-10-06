@@ -145,6 +145,34 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
 @end
 ```
 
+#### Options
+
+|Option|Type|Default|Description|
+|:-:|:-:|:-:|:-:|
+|kTGCameraOptionSaveImageToDevice|NSNumber (YES/NO)|YES|Save or not the photo in the camera roll|
+
+```obj-c
+#import "TGCamera.h"
+
+@implementation UIViewController
+
+- (void)viewDidLoad
+{
+    //...
+    [TGCamera setOption:kTGCameraOptionSaveImageToDevice value:[NSNumber numberWithBool:YES]];
+    //...
+}
+
+- (IBAction)buttonTapped
+{
+    //...
+    BOOL saveToDevice = [[TGCamera getOption:kTGCameraOptionSaveImageToDevice] boolValue];
+    //...    
+}
+
+@end
+```
+
 ---
 ---
 

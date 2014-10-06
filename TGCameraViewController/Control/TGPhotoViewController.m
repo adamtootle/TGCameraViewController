@@ -121,7 +121,8 @@
         
         ALAuthorizationStatus status = [ALAssetsLibrary authorizationStatus];
         BOOL saveToDevice = [[TGCamera getOption:kTGCameraOptionSaveImageToDevice] boolValue];
-        if (status == ALAuthorizationStatusAuthorized && saveToDevice == YES) {
+
+        if (status != ALAuthorizationStatusDenied && saveToDevice == YES) {
             TGAssetsLibrary *library = [TGAssetsLibrary defaultAssetsLibrary];
             [library saveImage:_photo completion:nil];
         }

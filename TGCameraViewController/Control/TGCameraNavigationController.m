@@ -87,11 +87,13 @@
 - (void)setupNotDeterminedWithDelegate:(id<TGCameraDelegate>)delegate
 {
     [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-        if (granted) {
-            [self setupAuthorizedWithDelegate:delegate];
-        } else {
-            [self setupDenied];
-        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (granted) {
+                [self setupAuthorizedWithDelegate:delegate];
+            } else {
+                [self setupDenied];
+            }
+        });
     }];
 }
 
