@@ -59,8 +59,13 @@
             device.exposurePointOfInterest = pointOfInterest;
         }
         
-        device.focusMode = AVCaptureFocusModeContinuousAutoFocus;
-        device.exposureMode = AVCaptureExposureModeContinuousAutoExposure;
+        if ([device isFocusModeSupported:AVCaptureFocusModeContinuousAutoFocus]) {
+            device.focusMode = AVCaptureFocusModeContinuousAutoFocus;
+        }
+        
+        if ([device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
+            device.exposureMode = AVCaptureExposureModeContinuousAutoExposure;
+        }
         
         [device unlockForConfiguration];
     }
