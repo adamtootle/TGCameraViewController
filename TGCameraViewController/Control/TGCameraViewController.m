@@ -78,6 +78,12 @@
     _topRightView.transform = CGAffineTransformMakeRotation(M_PI_2);
     _bottomLeftView.transform = CGAffineTransformMakeRotation(-M_PI_2);
     _bottomRightView.transform = CGAffineTransformMakeRotation(M_PI_2*2);
+    
+    if ([_delegate respondsToSelector:@selector(preferredCameraPosition)]) {
+        if ([_delegate preferredCameraPosition] == AVCaptureDevicePositionFront) {
+            [self toggleTapped];
+        }
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

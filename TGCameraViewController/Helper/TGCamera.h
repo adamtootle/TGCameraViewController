@@ -80,5 +80,6 @@
 @optional
 
 - (void)cameraWillTakePhoto;
+- (AVCaptureDevicePosition)preferredCameraPosition;
 
 @end
