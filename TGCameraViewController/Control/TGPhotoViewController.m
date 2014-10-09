@@ -29,6 +29,7 @@
 #import "TGCameraColor.h"
 #import "TGCameraFilterView.h"
 #import "UIImage+CameraFilters.h"
+#import "UIImage+CameraLookupFilter.h"
 
 
 
@@ -49,9 +50,11 @@
 - (IBAction)filtersTapped;
 
 - (IBAction)defaultFilterTapped:(UIButton *)button;
-- (IBAction)satureFilterTapped:(UIButton *)button;
-- (IBAction)curveFilterTapped:(UIButton *)button;
-- (IBAction)vignetteFilterTapped:(UIButton *)button;
+- (IBAction)proFilterTapped:(UIButton *)button;
+- (IBAction)lkFilterTapped:(UIButton *)button;
+- (IBAction)riverFilterTapped:(UIButton *)button;
+- (IBAction)chesterFilterTapped:(UIButton *)button;
+- (IBAction)throwbackFilterTapped:(UIButton *)button;
 
 - (void)addDetailViewToButton:(UIButton *)button;
 + (instancetype)newController;
@@ -149,22 +152,34 @@
     _photoView.image = _photo;
 }
 
-- (IBAction)satureFilterTapped:(UIButton *)button
+- (void)proFilterTapped:(UIButton *)button
 {
     [self addDetailViewToButton:button];
-    _photoView.image = [_photo saturateImage:1.8 withContrast:1];
+    _photoView.image = [_photo filteredWithLookupImageNamed:@"LK-pro-lookup.png"];
 }
 
-- (IBAction)curveFilterTapped:(UIButton *)button
+- (void)lkFilterTapped:(UIButton *)button
 {
     [self addDetailViewToButton:button];
-    _photoView.image = [_photo curveFilter];
+    _photoView.image = [_photo filteredWithLookupImageNamed:@"vegetarian-lookup.png"];
 }
 
-- (IBAction)vignetteFilterTapped:(UIButton *)button
+- (void)riverFilterTapped:(UIButton *)button
 {
     [self addDetailViewToButton:button];
-    _photoView.image = [_photo vignetteWithRadius:0 intensity:6];
+    _photoView.image = [_photo filteredWithLookupImageNamed:@"swimming-lookup.png"];
+}
+
+- (void)chesterFilterTapped:(UIButton *)button
+{
+    [self addDetailViewToButton:button];
+    _photoView.image = [_photo filteredWithLookupImageNamed:@"chester-lookup.png"];
+}
+
+- (void)throwbackFilterTapped:(UIButton *)button
+{
+    [self addDetailViewToButton:button];
+    _photoView.image = [_photo filteredWithLookupImageNamed:@"vintage-lookup.png"];
 }
 
 #pragma mark -
