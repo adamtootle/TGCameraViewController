@@ -211,6 +211,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     TGPhotoViewController *viewController = [TGPhotoViewController newWithDelegate:_delegate photo:info[UIImagePickerControllerOriginalImage]];
+    viewController.disableSaveToDevice = YES;
     [self.navigationController pushViewController:viewController animated:NO];
     
     [self dismissViewControllerAnimated:YES completion:nil];

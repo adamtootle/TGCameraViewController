@@ -28,6 +28,8 @@
 
 @interface TGPhotoViewController : UIViewController
 
+@property(nonatomic) BOOL disableSaveToDevice;
+
 + (instancetype)new __attribute__
 ((unavailable("[+new] is not allowed, use [+newWithDelegate:photo:]")));
 
