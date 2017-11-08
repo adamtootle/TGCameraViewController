@@ -27,7 +27,7 @@
 
 @interface TGCameraFilterView : UIView
 
-- (void)addToView:(UIView *)view aboveView:(UIView *)aboveView;
+- (void)addToView:(UIView *)view aboveView:(UIView *)aboveView bottomSpacing:(CGFloat)bottomSpacing;
 - (void)removeFromSuperviewAnimated;
 
 @end

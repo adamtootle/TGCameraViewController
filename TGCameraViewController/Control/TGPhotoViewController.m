@@ -138,7 +138,11 @@
     if ([_filterView isDescendantOfView:self.view]) {
         [_filterView removeFromSuperviewAnimated];
     } else {
-        [_filterView addToView:self.view aboveView:_bottomView];
+        if (@available(iOS 11.0, *)) {
+            [_filterView addToView:self.view aboveView:_bottomView bottomSpacing:self.view.safeAreaInsets.bottom];
+        } else {
+            [_filterView addToView:self.view aboveView:_bottomView bottomSpacing:0.0f];
+        }
         [self.view sendSubviewToBack:_filterView];
         [self.view sendSubviewToBack:_photoView];
     }

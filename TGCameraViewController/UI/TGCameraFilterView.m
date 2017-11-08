@@ -73,10 +73,10 @@
 #pragma mark -
 #pragma mark - Public methods
 
-- (void)addToView:(UIView *)view aboveView:(UIView *)aboveView
+- (void)addToView:(UIView *)view aboveView:(UIView *)aboveView bottomSpacing:(CGFloat)bottomSpacing
 {
     CGRect frame = self.frame;
-    frame.origin.y = CGRectGetMaxY(view.frame) - CGRectGetHeight(aboveView.frame);
+    frame.origin.y = CGRectGetMaxY(view.frame) - CGRectGetHeight(aboveView.frame) - bottomSpacing;
     self.frame = frame;
     
     [view addSubview:self];
